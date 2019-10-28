@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Partie 2 : exercice 3 javascript</title>
+  </head>
+  <body>
+  <script>
+  'use strict';
+
+document.addEventListener('keydown', (event) => {
+  const nomTouche = event.key;
+
+  if (nomTouche === 'Control') {
+    // Pas d'alerte si seule la touche Control est pressée.
+    return;
+  }
+
+  if (event.ctrlKey) {
+    // Même si event.key n'est pas 'Control' (par ex., 'a' is pressed),
+    // event.ctrlKey peut être true si la touche Ctrl est pressée dans le même temps.
+    alert(`Combinaison de ctrlKey + ${nomTouche}`);
+  } else {
+    alert(`Touche pressée ${nomTouche}`);
+  }
+}, false);
+
+document.addEventListener('keyup', (event) => {
+  const nomTouche = event.key;
+
+  // Dès que l'utilisateur relâche la touche Ctrl, la touche n'est plus active.
+  // Aussi event.ctrlKey est false.
+  if (nomTouche === 'Control') {
+    alert('La touche Control a été relâchée');
+  }
+}, false);
+
+  </script>
+    <p>Dans le fichier HTML fourni, afficher une boite de dialogue avec la valeur du champ dès que l'on appuie sur le clavier.</p>
+    <form>
+    <label for="lastname">Votre nom  : </label><input type="text" name="lastname" id="lastname" />
+  </form>
+  </body>
+</html>
